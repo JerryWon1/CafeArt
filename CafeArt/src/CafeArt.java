@@ -9,16 +9,27 @@ import graphics.Graphics;
  */
 public class CafeArt {
 
-    public static final int MORTAR = 5; //space between each row in a grid
+    public static final int MORTAR = 2; //space between each row in a grid
 
     public static void main(String[] args) {
         Graphics.cafeWall.open();
 
         int drawnArea = 0;
 
-        drawnArea += printGrid(50, 50, 40, 1, 8, 10);
+        drawnArea += printRow(0, 0, 20, 4); //upper left
+        Graphics.cafeWall.pause();
+        drawnArea += printRow(50, 70, 30, 5); //mid left
+        Graphics.cafeWall.pause();
+        drawnArea += printGrid(10, 150, 25, 4, 8, 0); //lower left
+        Graphics.cafeWall.pause();
+        drawnArea += printGrid(250, 200, 25, 3, 6, 10); //lower middle
+        Graphics.cafeWall.pause();
+        drawnArea += printGrid(425, 180, 20, 5, 10, 10); //lower right
+        Graphics.cafeWall.pause();
+        drawnArea += printGrid(400, 20, 35, 2, 4, 35); //upper right
+        Graphics.cafeWall.pause();
 
-        System.out.println(drawnArea);
+        System.out.println(Math.round(drawnArea/wallArea() * 10000) / 100.0 + "% covered");
         Graphics.cafeWall.pause();
         Graphics.cafeWall.close();
 
@@ -76,6 +87,10 @@ public class CafeArt {
             currentY += MORTAR + size;
         }
         return area;
+    }
+
+    public static double wallArea() {
+        return (double) Graphics.cafeWall.getWidth() * Graphics.cafeWall.getHeight();
     }
 
 }
