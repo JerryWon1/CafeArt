@@ -89,6 +89,10 @@ public class CafeArt {
         return area;
     }
 
+    /** calculates total area of wall
+     *
+     * @return - Area of entire wall
+     */
     public static double wallArea() {
         return (double) Graphics.cafeWall.getWidth() * Graphics.cafeWall.getHeight();
     }
